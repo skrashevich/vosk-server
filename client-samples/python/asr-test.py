@@ -10,7 +10,8 @@ async def run_test(uri):
 
         wf = wave.open(sys.argv[1], "rb")
         await websocket.send('{ "config" : { "sample_rate" : %d } }' % (wf.getframerate()))
-        buffer_size = int(wf.getframerate() * 0.2) # 0.2 seconds of audio
+        print (wf.getframerate())
+        buffer_size = int(wf.getframerate() * 1) # 0.2 seconds of audio
         while True:
             data = wf.readframes(buffer_size)
 
@@ -23,4 +24,4 @@ async def run_test(uri):
         await websocket.send('{"eof" : 1}')
         print (await websocket.recv())
 
-asyncio.run(run_test('ws://localhost:2700'))
+asyncio.run(run_test('ws://172.19.0.2:2700'))

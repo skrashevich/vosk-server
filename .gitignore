@@ -2,4 +2,8 @@ __pycache__
 *.pyc
 *.tar.gz
 *pb2*.py
+*.wav
+composer.lock
+composer.phar
 model
+client-samples/php/vendor
